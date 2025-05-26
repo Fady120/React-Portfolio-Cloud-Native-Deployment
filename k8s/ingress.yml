@@ -1,24 +1,37 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: portfolio-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: cluster-issuer-letsencrypt-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite /fady https://fady.axolotlite.com permanent;
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: portfolio-ingress
 spec:
   ingressClassName: external-nginx
+  rules:
+  - host: fady.axolotlite.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: portfolio
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: axolotlite.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: portfolio
+            port:
+              number: 80
+        path: /fady
+        pathType: Prefix
   tls:
   - hosts:
-    - "axolotlite.com"
+    - axolotlite.com
+    - fady.axolotlite.com
     secretName: nginx-tls-axolotlite
-  rules:
-    - host: axolotlite.com
-      http:
-        paths:
-          - path: /fady
-            pathType: Prefix
-            backend:
-              service:
-                name: portfolio
-                port:
-                  number: 80
