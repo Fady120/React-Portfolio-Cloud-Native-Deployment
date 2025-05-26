@@ -1,0 +1,59 @@
+name: test-deploy-portfoilo
+
+permissions:
+  contents: write
+  packages: write
+
+on: push
+
+jobs:
+    build-and-push-dockerimage:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check Repo
+              uses: actions/checkout@v4
+
+            - name: Login to Docker Hub
+              uses: docker/login-action@v3
+              with:
+                  registry: docker.io
+                  username: ${{ vars.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Login to GitHub Container Registry (GHCR)
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build and Push
+              uses: docker/build-push-action@v5
+              with:
+                  context: .
+                  push: true
+                  tags: |
+                      docker.io/${{ vars.DOCKERHUB_USERNAME }}/portfolio:${{ github.sha }}
+                      ghcr.io/${{ github.actor }}/portfolio:${{ github.sha }}
+
+    pull-test-dockerimage:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Login to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Pull Docker Image
+              run: |
+                  docker pull ghcr.io/${{ github.actor }}/portfolio:${{ github.sha }}
+
+            - name: Run Docker Image
+              run: |
+                  docker run ghcr.io/${{ github.actor }}/portfolio:${{ github.sha }}
+
+            - name: Test If Continer is Running
+              run: |
+                  docker ps
