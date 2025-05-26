@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: fadysg/portfolio:14b29e7acfd1c99863a3adcc94409afd4aea2161
+          image: fadysg/portfolio:latest
           ports:
             - containerPort: 3000
           env:
