@@ -38,6 +38,7 @@ jobs:
 
     pull-test-dockerimage:
         runs-on: ubuntu-latest
+        needs: build-and-push-dockerimage
         steps:
             - name: Login to GHCR
               uses: docker/login-action@v3
@@ -48,11 +49,11 @@ jobs:
 
             - name: Pull Docker Image
               run: |
-                  docker pull ghcr.io/${{ github.actor }}/portfolio:${{ github.sha }}
+                  docker pull ghcr.io/fady120/portfolio:${{ github.sha }}
 
             - name: Run Docker Image
               run: |
-                  docker run ghcr.io/${{ github.actor }}/portfolio:${{ github.sha }}
+                  docker run ghcr.io/fady120/portfolio:${{ github.sha }}
 
             - name: Test If Continer is Running
               run: |
