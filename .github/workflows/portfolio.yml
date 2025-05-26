@@ -53,7 +53,7 @@ jobs:
 
             - name: Run Docker Image
               run: |
-                  docker run ghcr.io/fady120/portfolio:${{ github.sha }}
+                  docker run -d ghcr.io/fady120/portfolio:${{ github.sha }}
 
             - name: Test If Continer is Running
               run: |
