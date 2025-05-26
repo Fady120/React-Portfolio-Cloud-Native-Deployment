@@ -34,7 +34,7 @@ jobs:
                   push: true
                   tags: |
                       docker.io/${{ vars.DOCKERHUB_USERNAME }}/portfolio:${{ github.sha }}
-                      ghcr.io/${{ github.actor }}/portfolio:${{ github.sha }}
+                      ghcr.io/fady120/portfolio:${{ github.sha }}
 
     pull-test-dockerimage:
         runs-on: ubuntu-latest
