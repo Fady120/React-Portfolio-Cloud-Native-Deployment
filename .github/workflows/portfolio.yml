@@ -33,8 +33,8 @@ jobs:
                   context: .
                   push: true
                   tags: |
-                      docker.io/${{ vars.DOCKERHUB_USERNAME }}/portfolio:${{ github.sha }}
-                      ghcr.io/fady120/portfolio:${{ github.sha }}
+                      docker.io/${{ vars.DOCKERHUB_USERNAME }}/portfolio:latest
+                      ghcr.io/fady120/portfolio:latest
 
     pull-test-dockerimage:
         runs-on: ubuntu-latest
@@ -49,11 +49,11 @@ jobs:
 
             - name: Pull Docker Image
               run: |
-                  docker pull ghcr.io/fady120/portfolio:${{ github.sha }}
+                  docker pull ghcr.io/fady120/portfolio:latest
 
             - name: Run Docker Image
               run: |
-                  docker run -d ghcr.io/fady120/portfolio:${{ github.sha }}
+                  docker run -d ghcr.io/fady120/portfolio:latest
 
             - name: Test If Continer is Running
               run: |
