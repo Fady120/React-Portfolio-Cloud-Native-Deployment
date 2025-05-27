@@ -62,21 +62,6 @@ export const info = {
             icon: "fa fa-linkedin",
             label: 'linkedin'
         }
-        // {
-        //     link: "https://facebook.com",
-        //     icon: 'fa fa-facebook',
-        //     label: 'facebook'
-        // },
-        // {
-        //     link: "https://instagram.com",
-        //     icon: 'fa fa-instagram',
-        //     label: 'instagram'
-        // },
-        // {
-        //     link: "https://twitter.com",
-        //     icon: "fa fa-twitter",
-        //     label: 'twitter'
-        // }
 // Feel free to remove any of these that you don't have. I'll write an FAQ on how to add new ones later, let me know if you have a request for an icon!
 // Just change the links so that they lead to your social profiles.
 
@@ -117,19 +102,16 @@ export const info = {
         },
         {
             title: "Weather App K8S",
-            // live: "https://paytonpierce.dev",
             source: "https://github.com/Fady120/weatherapp-k8s",
             image: weatherapp
         },
         {
             title: "My React Portfolio CI/CD",
-            // live: "https://paytonpierce.dev",
             source: "https://github.com/Fady120/instabug_internship_exam_2023",
             image: argo
         },
         {
             title: "Library Management System",
-            // live: "https://paytonpierce.dev",
             source: "https://github.com/Fady120/Library-Management-System",
             image: lib
         }
