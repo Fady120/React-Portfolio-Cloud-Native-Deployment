@@ -1,12 +1,13 @@
-# React Portfolio – Containerized Deployment with Kubernetes and GitHub Actions
+# React Portfolio – Cloud-Native Deployment
 
-This project is a customized version of a React-based portfolio website. Building upon the original design, I've integrated containerization using Docker, orchestrated deployment with Kubernetes manifests, and established a CI/CD pipeline through GitHub Actions.
+This project is a customized version of a React-based portfolio website. Building upon the original design, I've integrated containerization using Docker, orchestrated deployment with Kubernetes manifests, automated CI with GitHub Actions, and implemented GitOps-based CD using ArgoCD.
 
 ## 🚀 Features
 
 - **Docker Integration**: Containerized the React application for consistent and portable deployments.
 - **Kubernetes Manifests**: Defined deployment configurations to manage application scaling and availability.
-- **GitHub Actions Workflow**: Automated the build, test, and deployment processes, ensuring seamless updates.
+- **GitHub Actions Workflow**: Automated the build and push of Docker images to a container registry.
+- **ArgoCD Integration**: Enabled continuous deployment to Kubernetes using a GitOps approach.
 
 ## 📦 Docker Setup
 
@@ -40,16 +41,19 @@ kubectl apply -f k8s/
 
 Ensure your Kubernetes cluster is running and configured correctly before applying the manifests.
 
-## ⚙️ GitHub Actions CI/CD
+## ⚙️ CI/CD Pipeline
 
-The `.github/workflows/deploy.yml` file defines the CI/CD pipeline:
+### GitHub Actions
+
+The `.github/workflows/deploy.yml` file defines the CI pipeline:
 
 - **Build**: Compiles the React application.
 - **Dockerize**: Builds and tags the Docker image.
 - **Push**: Uploads the image to Docker Hub or another registry.
-- **Deploy**: Applies Kubernetes manifests to update the deployment.
 
-This workflow triggers on pushes to the `main` branch.
+### ArgoCD
+
+ArgoCD watches the Git repository for changes and automatically syncs Kubernetes manifests to the cluster, enabling continuous deployment.
 
 ## 🛠️ Prerequisites
 
@@ -57,6 +61,7 @@ This workflow triggers on pushes to the `main` branch.
 - **Kubernetes Cluster**: Local (e.g., Minikube) or cloud-based.
 - **kubectl**: Command-line tool for interacting with the cluster.
 - **GitHub Secrets**: Store sensitive information like Docker registry credentials.
+- **ArgoCD**: Installed and configured to watch the repository.
 
 ## 📁 Project Structure
 
@@ -74,7 +79,3 @@ This workflow triggers on pushes to the `main` branch.
 ├── package.json
 └── README.md
 ```
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
