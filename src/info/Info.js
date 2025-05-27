@@ -35,12 +35,12 @@ export const info = {
     baseColor: colors[0],
     miniBio: [ // these are just some "tidbits" about yourself. You can look at mine https://paytonjewell.github.io/#/ for an example if you'd like
         {
-            emoji: '☕',
-            text: 'fueled by coffee'
+            emoji: '🍕',
+            text: 'Pizza Lover'
         },
         {
             emoji: '🌎',
-            text: 'based in Cairo, Egypt'
+            text: 'Based in Cairo, Egypt'
         },
         // {
         //     emoji: "💼",
@@ -62,38 +62,33 @@ export const info = {
             icon: "fa fa-linkedin",
             label: 'linkedin'
         }
-// Feel free to remove any of these that you don't have. I'll write an FAQ on how to add new ones later, let me know if you have a request for an icon!
-// Just change the links so that they lead to your social profiles.
-
     ],
     bio: "Hello! I'm Fady. I'm a Cloud & DevOps engineer.",
     skills:
         {
-            proficientWith: ['DevOps', 'Docker', 'K8S', 'git', 'github', 'Github Actions', 'Ansible', 'AWS', 'python', 'MySQL'],
-            exposedTo: ['nodejs', 'Go', 'Flutter', 'React Native']
+            proficientWith: ['Docker', 'K8S', 'Git', 'GitHub', 'Github Actions', 'Ansible', 'AWS', 'Python', 'MySQL'],
+            exposedTo: ['Node.js', 'Go', 'Flutter', 'React Native']
         }
     ,
     hobbies: [
         {
-            label: 'reading',
+            label: 'Reading',
             emoji: '📖'
         },
         {
-            label: 'theater',
-            emoji: '🎭'
+            label: 'Biking',
+            emoji: '🚴‍♂️'
         },
         {
-            label: 'movies',
+            label: 'Movies',
             emoji: '🎥'
         },
         {
-            label: 'cooking',
-            emoji: '🌶'
+            label: 'Video Games',
+            emoji: '🎮'
         }
-// Same as above, change the emojis to match / relate to your hobbies or interests.
-// You can also remove the emojis if you'd like, I just think they look cute :P
     ],
-    portfolio: [ // This is where your portfolio projects will be detailed
+    projects: [ // This is where your portfolio projects will be detailed
         {
             title: "AWS Automation with Terraform",
             // live: "https://paytonpierce.dev", //this should be a link to the live version of your project, think github pages, netlify, heroku, etc. Or your own domain, if you have it.

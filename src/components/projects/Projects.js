@@ -1,15 +1,15 @@
 import React from 'react';
-import PortfolioBlock from "./PortfolioBlock";
+import ProjectsBlock from "./ProjectsBlock";
 import {Box, Grid} from "@mui/material";
 import {info} from "../../info/Info";
 
-export default function Portfolio({innerRef}) {
+export default function Projects({innerRef}) {
     return (
-        <Box id={'portfolio'} ref={innerRef}>
+        <Box id={'projects'} ref={innerRef}>
             <Grid container display={'flex'} justifyContent={'center'}>
-                {info.portfolio.map((project, index) => (
+                {info.projects.map((project, index) => (
                    <Grid item xs={12} md={6} key={index}>
-                       <PortfolioBlock image={project.image} live={project.live} source={project.source} title={project.title} />
+                       <ProjectsBlock image={project.image} live={project.live} source={project.source} title={project.title} />
                    </Grid>
                 ))}
             </Grid>
